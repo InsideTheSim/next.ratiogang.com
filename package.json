@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@arrow-js/core": "^1.0.0-alpha.5",
+    "vite": "^3.2.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}
