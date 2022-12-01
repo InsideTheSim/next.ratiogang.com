@@ -61,14 +61,19 @@ const ratio = reactive({
     current: 0,
     open_24h: 0,
     change_24h: 0,
-    deserved: 0,
+    flippty: 0,
+    flipptyPrice: 0,
     flippening: 0,
+    flippeningPrice: 0
+})
+
+const marketData = reactive({
+    bitcoin: {},
+    ethereum: {}
 })
 
 const content = reactive({
     taglines: {
-        [ratio.deserved || 0.08]: 'Mom! Get the camera!',
-        [ratio.flippening || 0.16]: '*Excited dolphin noises*',
         0.0426: 'Because seriously, what the fuck you guys.',
         0.068: 'In retrospect, it was inevitable.',
         0.069: 'Nice.',
@@ -77,11 +82,14 @@ const content = reactive({
         0.145: 'Oh Lawd, he coming!',        
     }
 })
+ratio.$on('flippty', () => content.taglines[parseFloat(ratio.flippty)] = 'Mom, get the camera!')
+ratio.$on('flippening', () => content.taglines[parseFloat(ratio.flippening)] = '*excited dolphin noises*')
 
 export {
     userConfig,
     siteOptions,
     prices,
     ratio,
+    marketData,
     content
 }
