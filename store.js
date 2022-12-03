@@ -110,32 +110,44 @@ function setupMarkers() {
                         Death of ETH Party
                     </a>
                 `,
-                icon: `🎉`
+                icon: `🎉`,
+                min: 0.1,
+                max: 0.3
             },
             {
                 value: ratio.flippty,
                 label: 'Flippty Percent',
-                icon: `🦐`
+                icon: `🦐`,
+                min: 0.1,
+                max: 0.2
             },
             {
                 value: ratio.flippening,
                 label: 'The Flippening',
-                icon: `🐬`
+                icon: `🐬`,
+                min: 0.2,
+                max: 1
             },
             {
                 value: (ratio.flippening * 2).toFixed(5),
                 label: 'The Double Dolph',
-                icon: `🐬🐬`
+                icon: `🐬🐬`,
+                min: 0.4,
+                max: 1
             },
             {
                 value: (ratio.flippening * 3).toFixed(5),
                 label: 'The Trip Flip',
-                icon: `🐬🐬🐬`
+                icon: `🐬🐬🐬`,
+                min: 0.6,
+                max: 1
             },
             {
                 value: (ratio.flippening * 4).toFixed(5),
                 label: 'The Quad Pod',
-                icon: `🐬🐬🐬🐬`
+                icon: `🐬🐬🐬🐬`,
+                min: 0.8,
+                max: 1
             }
         ]
     }

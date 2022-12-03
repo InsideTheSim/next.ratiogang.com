@@ -1,6 +1,6 @@
 import { html } from '@arrow-js/core'
-import { prices, content, ratio } from '../store.js'
-import { formatPrice, getUserCurrencyID, onRangeChange} from '../lib/utils'
+import { prices, content, ratio, userConfig } from '../store.js'
+import { formatPrice, onRangeChange} from '../lib/utils'
 
 function setupRatioRangeInput () {
     ratio.inputElement = document.getElementById('ratio-range-input');
@@ -48,14 +48,18 @@ export default html`
     <button @click="${increaseRatioRange}">+</button>
     ${() => ratio.userDefined ? html`<button @click="${resetRatioRange}">Reset Meter</button>` : ''}
     
-    <ul>
+    <ul id="ratio-meter-markers">
     ${() => content.markers.map(
-        item => html`
-        <li>
-            ${item.value}: <strong>${item.label} - ${formatPrice((prices.BTC * item.value), 'en-US', getUserCurrencyID())}</strong><br>
-            ${item.icon}
-        </li>
-        `.key(item.label)
+        item => {
+            if (prices.BTC && item.min <= parseFloat(ratio.meterLimit) && item.max >= parseFloat(ratio.meterLimit)) {
+                return html`
+                <li>
+                    ${item.value}: <strong>${item.label} - ${formatPrice((prices.BTC * item.value), userConfig.currency.format, userConfig.currency.id)}</strong><br>
+                    ${item.icon}
+                </li>
+                `.key(`${item.label}-${userConfig.currency.id}`)
+            }
+        }
     )}
     </ul>
 </div>
