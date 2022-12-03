@@ -37,7 +37,7 @@
 }
 
 .dropdown[data-is-open] ul.dropdown-list > li:hover {
-    background-color: var(--red);
+    background-color: var(--gray-l);
 }
 
 ul.dropdown-list {

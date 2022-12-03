@@ -4,7 +4,7 @@ import DynamicTagline from './DynamicTagline.js'
 import Dropdown from './Dropdown.js'
 
 function updateUserConfig(payload) {
-    userConfig[payload.key] = payload.value
+    userConfig[payload.updateKey] = payload.value
 }
 
 export default html`

@@ -11,6 +11,10 @@ const userConfig = reactive({
         id: 'USD'
     }
 })
+userConfig.$on('currency', () => {
+    prices.ETH = 0
+    prices.BTC = 0
+})
 
 const siteOptions = {
     themes: [
