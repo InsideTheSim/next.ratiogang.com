@@ -47,7 +47,6 @@ const siteOptions = {
 }
 
 
-
 const prices = reactive({
     ETH: 0,
     BTC: 0,
@@ -64,7 +63,9 @@ const ratio = reactive({
     flippty: 0,
     flipptyPrice: 0,
     flippening: 0,
-    flippeningPrice: 0
+    flippeningPrice: 0,
+    meterLimit: 0.2,
+    inputElement: null
 })
 
 const marketData = reactive({
