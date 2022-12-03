@@ -1,0 +1,77 @@
+/* =====================
+| 
+|   Variables
+|
+===================== */
+
+:root {
+    --gray-l: #e5e5e5;
+    --red: #ef4444;
+    --red-l: #f87171;
+}
+
+/* =====================
+| 
+|   Dropdown
+|
+===================== */
+
+.dropdown {
+    height: 2em;
+    max-width: 150px;
+    position: relative;
+    user-select: none;
+}
+
+.dropdown[data-is-open] ul.dropdown-list {
+    position: relative;
+    z-index: 2;
+}
+
+.dropdown[data-is-open] ul.dropdown-list::before {
+    display: none;
+}
+
+.dropdown[data-is-open] ul.dropdown-list > li {
+    display: flex;
+}
+
+.dropdown[data-is-open] ul.dropdown-list > li:hover {
+    background-color: var(--red);
+}
+
+ul.dropdown-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--gray-l);
+    border-radius: .33em;
+    overflow: hidden;
+    background-color: white;
+}
+
+ul.dropdown-list::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: .25em solid transparent;
+    position: absolute;
+    right: .75em;
+    border-top-color: var(--gray-l);
+    top: calc(50% - .05em);
+    pointer-events: none;
+}
+
+ul.dropdown-list > li {
+    height: 2rem;
+    padding: 0 1em;
+    display: flex;
+    align-items: center;
+    font-size: .875em;
+    display: none;
+}
+
+ul.dropdown-list > li[data-selected] {
+    display: flex;
+}

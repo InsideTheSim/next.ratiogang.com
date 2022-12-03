@@ -1,8 +1,11 @@
 import { reactive } from "@arrow-js/core"
 
 const userConfig = reactive({
-    siteTheme: 'dark',
-    userCurrency: {
+    theme: {
+        id: 'dark',
+        label: '🌙 Dark',
+    },
+    currency: {
         label: '🇺🇸 USD',
         format: 'en-US',
         id: 'USD'
@@ -12,16 +15,16 @@ const userConfig = reactive({
 const siteOptions = {
     themes: [
         {
-          id: 'system',
-          label: '🌗 Auto',
+            id: 'system',
+            label: '🌗 Auto',
         },
         {
-          id: 'light',
-          label: '☀️ Light',
+            id: 'light',
+            label: '☀️ Light',
         },
         {
-          id: 'dark',
-          label: '🌙 Dark',
+            id: 'dark',
+            label: '🌙 Dark',
         },
     ],
     currencies: [
@@ -46,7 +49,6 @@ const siteOptions = {
     }
 }
 
-
 const prices = reactive({
     ETH: 0,
     BTC: 0,
@@ -65,7 +67,8 @@ const ratio = reactive({
     flippening: 0,
     flippeningPrice: 0,
     meterLimit: 0.2,
-    inputElement: null
+    inputElement: null,
+    userDefined: false
 })
 
 const marketData = reactive({
@@ -80,11 +83,11 @@ const content = reactive({
         0.069: 'Nice.',
         0.0825: 'Feel the burn!',
         0.1: 'Approaching market rationality.',
-        0.145: 'Oh Lawd, he coming!',        
+        0.145: 'Oh Lawd, he coming!',
     },
     markers: [] // generated once requisit data is available in setupMarkers()
 })
-ratio.$on('flippty', () => { 
+ratio.$on('flippty', () => {
     content.taglines[parseFloat(ratio.flippty)] = 'Mom, get the camera!'
     setupMarkers()
 })
