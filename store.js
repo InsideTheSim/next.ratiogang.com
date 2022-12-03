@@ -1,4 +1,4 @@
-import { reactive, watch } from "@arrow-js/core"
+import { reactive } from "@arrow-js/core"
 
 const userConfig = reactive({
     siteTheme: 'dark',
@@ -80,10 +80,58 @@ const content = reactive({
         0.0825: 'Feel the burn!',
         0.1: 'Approaching market rationality.',
         0.145: 'Oh Lawd, he coming!',        
-    }
+    },
+    markers: [] // generated once requisit data is available in setupMarkers()
 })
-ratio.$on('flippty', () => content.taglines[parseFloat(ratio.flippty)] = 'Mom, get the camera!')
-ratio.$on('flippening', () => content.taglines[parseFloat(ratio.flippening)] = '*excited dolphin noises*')
+ratio.$on('flippty', () => { 
+    content.taglines[parseFloat(ratio.flippty)] = 'Mom, get the camera!'
+    setupMarkers()
+})
+ratio.$on('flippening', () => {
+    content.taglines[parseFloat(ratio.flippening)] = '*excited dolphin noises*'
+    setupMarkers()
+})
+
+function setupMarkers() {
+    if (ratio.flippty && ratio.flippening) {
+        content.markers = [
+            {
+                value: '0.03',
+                label: `
+                    <a href="https://twitter.com/LUKACACIC/status/1377371626656952326" target="_blank" rel="noopener noreferrer">
+                        Death of ETH Party
+                    </a>
+                `,
+                icon: `🎉`
+            },
+            {
+                value: ratio.flippty,
+                label: 'Flippty Percent',
+                icon: `🦐`
+            },
+            {
+                value: ratio.flippening,
+                label: 'The Flippening',
+                icon: `🐬`
+            },
+            {
+                value: (ratio.flippening * 2).toFixed(5),
+                label: 'The Double Dolph',
+                icon: `🐬🐬`
+            },
+            {
+                value: (ratio.flippening * 3).toFixed(5),
+                label: 'The Trip Flip',
+                icon: `🐬🐬🐬`
+            },
+            {
+                value: (ratio.flippening * 4).toFixed(5),
+                label: 'The Quad Pod',
+                icon: `🐬🐬🐬🐬`
+            }
+        ]
+    }
+}
 
 export {
     userConfig,
