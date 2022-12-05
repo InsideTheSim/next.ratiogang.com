@@ -15,8 +15,8 @@
     --red: #ef4444;
     --red-l: #ec6868;
     --blue-l: #89bfe2;
-    --green: #0da56b;
-    --green-d: #096c46;
+    --green: #109461;
+    --green-d: #0d6342;
 }
 
 /* =====================
@@ -171,7 +171,7 @@ ul.dropdown-list > li[data-selected] {
 ===================== */
 
 .ratio-meter {
-    margin: 10em 0;
+    margin: 10em 0 12em 0;
     position: relative;
 }
 
@@ -187,7 +187,7 @@ ul.dropdown-list > li[data-selected] {
 
 .ratio-meter-ui-element {
     border: 2px solid var(--dark-ll);
-    height: 2em;
+    height: 2.25em;
     background: var(--dark-l);
     border-radius: 999em;
     overflow: hidden;
@@ -262,7 +262,7 @@ ul.dropdown-list > li[data-selected] {
     width: 120px;
     transform: translateX(-50%);
     text-align: center;
-    padding: 1em 0.5em;
+    padding: 0.75em 0.5em;
     background: var(--dark-l);
     border: 1px solid var(--dark);
     border-radius: 0.5em;
@@ -277,16 +277,62 @@ ul.dropdown-list > li[data-selected] {
     left: calc(50% - 0.75em);
 }
 
+#ratio-meter-markers li .value {
+    margin-bottom: 0.33em;
+}
+#ratio-meter-markers li .price {
+    font-size: 0.75em;
+    opacity: 0.5;
+    margin-bottom: 0.25em;
+}
+#ratio-meter-markers li .label {
+    font-size: 0.85em;
+    margin-bottom: .5rem;
+}
+#ratio-meter-markers li .label a {
+    color: inherit;
+    text-decoration: underline;
+}
+#ratio-meter-markers li .icon {
+    font-size: 1.75em;
+    line-height: 1;
+    margin-bottom: -0.1em;
+}
+#ratio-meter-markers li button {
+    appearance: none;
+    border: none;
+    background: var(--green);
+    border-radius: 0.25em;
+    color: var(--gray-l);
+    font-weight: bold;
+    font-size: 0.75em;
+    padding: 0.25em;
+    margin-bottom: -0.1em;
+    cursor: pointer;
+}
+#ratio-meter-markers li button:hover {
+    filter: brightness(1.1)
+}
+
 #ratio-meter-markers li.current-marker {
     position: absolute;
     bottom: calc(100% + 1.25em);
+    background-color: var(--dark-ll);
 }
 #ratio-meter-markers li.current-marker::after {
     top: calc(100% - 1px);
-    border-top-color: var(--dark-l);
+    border-top-color: var(--dark-ll);
+}
+#ratio-meter-markers li.current-marker[data-active] {
+    background-color: var(--green-d);
 }
 #ratio-meter-markers li.current-marker[data-active]::after {
     border-top-color: var(--green-d);
+}
+#ratio-meter-markers li.current-marker .label {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 0;
 }
 
 #ratio-meter-markers li.target-marker {
@@ -297,6 +343,7 @@ ul.dropdown-list > li[data-selected] {
     bottom: calc(100% - 1px);
     border-bottom-color: var(--dark-l);
 }
+
 
 #ratio-meter-markers li.target-marker[data-active]::after {
     border-bottom-color: var(--green-d);

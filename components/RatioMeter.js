@@ -58,8 +58,20 @@ export default html`
             style="${() => `left: ${((ratio.userDefined ? parseFloat(ratio.userDefinedValue).toFixed(5) : ratio.current) / ratio.meterLimit) * 100}%;`}"
             data-active="${() => ratio.userDefined}"
         >
-            <span>${() => ratio.userDefined ? parseFloat(ratio.userDefinedValue || ratio.current).toFixed(5) : parseFloat(ratio.current).toFixed(5)}</span>
-            ${() => ratio.userDefined ? html`<button @click="${resetRatioRange}">Reset Meter</button>` : html`<span class="label">We're here.</span>`}
+            <span class="value">${() => ratio.userDefined ? parseFloat(ratio.userDefinedValue || ratio.current).toFixed(5) : parseFloat(ratio.current).toFixed(5)}</span>
+            <span class="price monospace">(${() => {
+                return formatPrice(
+                    (ratio.userDefined ? parseFloat(ratio.userDefinedValue || ratio.current) : parseFloat(ratio.current)) * prices.BTC, 
+                    userConfig.currency.format, 
+                    userConfig.currency.id
+                )}
+            })</span>
+            ${() => {
+                return ratio.userDefined ? 
+                    html`<button @click="${resetRatioRange}">Reset Meter</button>` : 
+                    html`<span class="label">We're here.</span>`
+                }
+            }
         </li>
         ${() => content.markers.map(item => {
             if (prices.BTC && item.min <= parseFloat(ratio.meterLimit) && item.max >= parseFloat(ratio.meterLimit)) {

@@ -143,7 +143,7 @@ function setupMarkers() {
                 id: 'trip',
                 value: (ratio.flippening * 3).toFixed(5),
                 label: 'The Trip Flip',
-                icon: `🐬🐬🐬`,
+                icon: `🐬<br>🐬🐬`,
                 min: 0.6,
                 max: 1
             },
@@ -151,7 +151,7 @@ function setupMarkers() {
                 id: 'quad',
                 value: (ratio.flippening * 4).toFixed(5),
                 label: 'The Quad Pod',
-                icon: `🐬🐬🐬🐬`,
+                icon: `🐬🐬<br>🐬🐬`,
                 min: 0.8,
                 max: 1
             }
