@@ -8,7 +8,7 @@ function updateUserConfig(payload) {
 }
 
 export default html`
-<div class="the-site-header">
+<div class="the-site-header" data-text-select="true">
     <div class="logo-container">
         <h1>
             <span class="emoji">💪</span>
@@ -18,12 +18,16 @@ export default html`
         ${DynamicTagline}
     </div>
     <div class="site-options">
-        ${Dropdown({
-            items: siteOptions.themes, 
-            callback: updateUserConfig, 
-            updateKey: 'theme', 
-            initialValue: userConfig.theme.label
-        })}
+        ${() => {
+            if (false) { // TODO: re-enable with light theme
+                return html`${Dropdown({
+                    items: siteOptions.themes, 
+                    callback: updateUserConfig, 
+                    updateKey: 'theme', 
+                    initialValue: userConfig.theme.label
+                })}`
+            }
+        }}
         ${Dropdown({
             items: siteOptions.currencies, 
             callback: updateUserConfig, 

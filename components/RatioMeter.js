@@ -6,12 +6,10 @@ function setupRatioRangeInput () {
     ratio.inputElement = document.getElementById('ratio-range-input');
     if (ratio.inputElement) onRangeChange(ratio.inputElement, setUserDefinedRatioValue)
 }
-
 function setUserDefinedRatioValue() {
     ratio.userDefinedValue = Math.min(parseFloat(ratio.inputElement.value), ratio.meterLimit)
     ratio.userDefined = true
 }
-
 function increaseRatioRange () {
     ratio.meterLimit = Math.min(parseFloat(ratio.meterLimit) + 0.1, 1).toFixed(1)
     setUserDefinedRatioValue()
@@ -27,12 +25,11 @@ function resetRatioRange () {
 
 export default html`
 <div class="ratio-meter">
-    <span>value: ${() => ratio.userDefined ? parseFloat(ratio.userDefinedValue || ratio.current).toFixed(5) : parseFloat(ratio.current).toFixed(5)}</span>
     <input 
         id="ratio-range-input"
         type="range"
-        step="0.001" 
-        min="0" 
+        step="0.00001" 
+        min="0.00001" 
         max="${() => ratio.meterLimit}" 
         value="${() => {
             // once we have a value, set up the watcher for the meter
@@ -43,24 +40,64 @@ export default html`
             return ratio.userDefined ? parseFloat(ratio.userDefinedValue).toFixed(5) : ratio.current
         }}"
     />
-    <span>${() => ratio.meterLimit}</span>
-    <button @click="${decreaseRatioRange}">-</button>
-    <button @click="${increaseRatioRange}">+</button>
-    ${() => ratio.userDefined ? html`<button @click="${resetRatioRange}">Reset Meter</button>` : ''}
+    <div class="ratio-meter-ui-element">
+        <div class="ratio-meter-track">
+            <div 
+                class="ratio-meter-track-fill"
+                style="${() => `max-width: calc(${((ratio.userDefined ? parseFloat(ratio.userDefinedValue).toFixed(5) : ratio.current) / ratio.meterLimit) * 100}%);`}"
+                data-percent="${() =>  `${(((ratio.userDefined ? parseFloat(ratio.userDefinedValue).toFixed(5) : ratio.current) / ratio.flippening) * 100).toFixed(2)}%`}"
+            >
+            </div>
+        </div>
+        <span class="meter-limit">${() => ratio.meterLimit}</span>
+    </div>
     
     <ul id="ratio-meter-markers">
-    ${() => content.markers.map(
-        item => {
+        <li 
+            class="current-marker"
+            style="${() => `left: ${((ratio.userDefined ? parseFloat(ratio.userDefinedValue).toFixed(5) : ratio.current) / ratio.meterLimit) * 100}%;`}"
+            data-active="${() => ratio.userDefined}"
+        >
+            <span>${() => ratio.userDefined ? parseFloat(ratio.userDefinedValue || ratio.current).toFixed(5) : parseFloat(ratio.current).toFixed(5)}</span>
+            ${() => ratio.userDefined ? html`<button @click="${resetRatioRange}">Reset Meter</button>` : html`<span class="label">We're here.</span>`}
+        </li>
+        ${() => content.markers.map(item => {
             if (prices.BTC && item.min <= parseFloat(ratio.meterLimit) && item.max >= parseFloat(ratio.meterLimit)) {
                 return html`
-                <li>
-                    ${item.value}: <strong>${item.label} - ${formatPrice((prices.BTC * item.value), userConfig.currency.format, userConfig.currency.id)}</strong><br>
-                    ${item.icon}
+                <li 
+                    class="target-marker"
+                    style="${() => `left: ${(item.value / ratio.meterLimit) * 100}%;`}"
+                    data-active="${() => ratio.current >= item.value}"
+                >
+                    <span class="value">${item.value}</span>
+                    <span class="price monospace">(${formatPrice((prices.BTC * item.value), userConfig.currency.format, userConfig.currency.id)})</span>
+                    <span class="label">${item.label}</span>
+                    <span class="icon">${item.icon}</span>
                 </li>
-                `.key(`${item.label}-${userConfig.currency.id}`)
+                `.key(`${item.id}-${userConfig.currency.id}`)
             }
-        }
-    )}
+        })}
     </ul>
+
+    <div class="ratio-meter-controls">
+        ${() => {
+            if (ratio.meterLimit < 1) {
+                return html`
+                <button class="increase" @click="${increaseRatioRange}">
+                    <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="caret-up"><path fill="currentColor" d="M32.032 352h255.93c28.425 0 42.767-34.488 22.627-54.627l-127.962-128c-12.496-12.496-32.758-12.497-45.255 0l-127.968 128C-10.695 317.472 3.55 352 32.032 352zM160 192l128 128H32l128-128z"></path></svg>
+                </button>
+                `
+            }
+        }}
+        ${() => {
+            if (ratio.meterLimit > 0.1) {
+                return html`
+                <button class="decrease" @click="${decreaseRatioRange}">
+                    <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="caret-down"><path fill="currentColor" d="M287.968 160H32.038c-28.425 0-42.767 34.488-22.627 54.627l127.962 128c12.496 12.496 32.758 12.497 45.255 0l127.968-128C330.695 194.528 316.45 160 287.968 160zM160 320L32 192h256L160 320z"></path></svg>
+                </button>
+                `
+            }
+        }}
+    </div>
 </div>
 `

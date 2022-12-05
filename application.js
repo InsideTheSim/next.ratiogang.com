@@ -1,5 +1,4 @@
 import { html } from '@arrow-js/core';
-import autoAnimate from '@formkit/auto-animate';
 import SiteHeader from './components/SiteHeader.js'
 import PriceStats from './components/PriceStats.js'
 import RatioMeter from './components/RatioMeter.js'
@@ -12,12 +11,11 @@ createPriceFeed();
 getMarketCapData();
 setInterval(getMarketCapData, 15000)
 
-// Mount our application components
+// Mount application components
 html`
-    ${SiteHeader}
-    ${PriceStats}
-    ${RatioMeter}
+    <div class="layout-container">
+        ${SiteHeader}
+        ${PriceStats}
+        ${RatioMeter}
+    </div>
 `(document.getElementById('app'))
-
-// setup AutoAnimate on DOM elements
-autoAnimate(document.getElementById('ratio-meter-markers'))

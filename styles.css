@@ -5,9 +5,85 @@
 ===================== */
 
 :root {
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    --dark: #1f2937;
+    --dark-l: #2d3a4b;
+    --dark-ll: #425267;
+    --gray: #cdcdce;
     --gray-l: #e5e5e5;
     --red: #ef4444;
-    --red-l: #f87171;
+    --red-l: #ec6868;
+    --blue-l: #89bfe2;
+    --green: #0da56b;
+    --green-d: #096c46;
+}
+
+/* =====================
+| 
+|   Base Typography
+|
+===================== */
+
+body {
+    font-family: var(--sans);
+}
+
+/* =====================
+| 
+|   Base Theme
+|
+===================== */
+
+* {
+    box-sizing: border-box;
+}
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+::selection {
+    background: var(--red-l);
+  }
+::-moz-selection {
+    background: var(--red-l);
+}
+
+html {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body,
+body[data-theme="dark"] {
+    background-color: var(--dark);
+    color: var(--gray-l);
+}
+
+.layout-container {
+    width: 100%;
+    max-width: 40em;
+    margin: 0 auto;
+}
+
+[data-text-select="true"] {
+    -webkit-user-select: auto;
+    user-select: auto;
+}
+
+a {
+    color: var(--blue-l);
+    text-decoration: none;
+}
+
+.monospace {
+    display: inline;
+    font-family: monospace;
+    position: relative;
+    line-height: 1.3em;
+    letter-spacing: -0.075;
+    top: -0.1em
 }
 
 /* =====================
@@ -18,7 +94,7 @@
 
 .dropdown {
     height: 2em;
-    max-width: 150px;
+    max-width: 120px;
     position: relative;
     user-select: none;
 }
@@ -37,17 +113,17 @@
 }
 
 .dropdown[data-is-open] ul.dropdown-list > li:hover {
-    background-color: var(--gray-l);
+    background-color: var(--dark-l);
 }
 
 ul.dropdown-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    border: 1px solid var(--gray-l);
+    border: 1px solid var(--dark-ll);
     border-radius: .33em;
     overflow: hidden;
-    background-color: white;
+    background-color: var(--dark);
 }
 
 ul.dropdown-list::before {
@@ -58,7 +134,7 @@ ul.dropdown-list::before {
     border: .25em solid transparent;
     position: absolute;
     right: .75em;
-    border-top-color: var(--gray-l);
+    border-top-color: var(--dark-ll);
     top: calc(50% - .05em);
     pointer-events: none;
 }
@@ -74,4 +150,188 @@ ul.dropdown-list > li {
 
 ul.dropdown-list > li[data-selected] {
     display: flex;
+}
+
+/* =====================
+| 
+|   Site Header
+|
+===================== */
+
+.dynamic-tagline {
+    color: var(--gray);
+    opacity: 0.75;
+    font-size: 0.85em;
+}
+
+/* =====================
+| 
+|   Ratio Meter
+|
+===================== */
+
+.ratio-meter {
+    margin: 10em 0;
+    position: relative;
+}
+
+#ratio-range-input {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0.25em;
+    right: 0.25em;
+    z-index: 3;
+    opacity: 0;
+}
+
+.ratio-meter-ui-element {
+    border: 2px solid var(--dark-ll);
+    height: 2em;
+    background: var(--dark-l);
+    border-radius: 999em;
+    overflow: hidden;
+}
+.ratio-meter-ui-element .meter-limit {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    right: 0.66rem;
+    top: 50%;
+    color: var(--dark-ll);
+    transform: translateY(-50%);
+    font-size: 0.85em;
+}
+.ratio-meter-track {
+    position: absolute;
+    top: 0.3em;
+    bottom: 0.3em;
+    left: 0.75em;
+    right: 0.75em;
+    z-index: 2;
+}
+.ratio-meter-track-fill {
+    box-sizing: content-box;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -0.45em;
+    right: -0.45em;
+    border-radius: 999em;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    background: var(--red);
+    background: linear-gradient(to right, var(--red), var(--red-l));
+}
+.ratio-meter-track-fill::before {
+    content: attr(data-percent);
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    font-size: 0.75em;
+    opacity: 0.9;
+}
+.ratio-meter-track-fill::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0.25em;
+    width: 1em;
+    height: 1em;
+    transform: translateY(-50%);
+    background-color: var(--gray-l);
+    border-radius: 50%;
+}
+
+#ratio-meter-markers {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+    left: 0.75em;
+    right: 0.75em;
+}
+
+#ratio-meter-markers li {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    width: 120px;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 1em 0.5em;
+    background: var(--dark-l);
+    border: 1px solid var(--dark);
+    border-radius: 0.5em;
+}
+#ratio-meter-markers li[data-active] {
+    background: var(--green-d);
+}
+#ratio-meter-markers li::after {
+    position: absolute;
+    content: '';
+    border: 0.75em solid transparent;
+    left: calc(50% - 0.75em);
+}
+
+#ratio-meter-markers li.current-marker {
+    position: absolute;
+    bottom: calc(100% + 1.25em);
+}
+#ratio-meter-markers li.current-marker::after {
+    top: calc(100% - 1px);
+    border-top-color: var(--dark-l);
+}
+#ratio-meter-markers li.current-marker[data-active]::after {
+    border-top-color: var(--green-d);
+}
+
+#ratio-meter-markers li.target-marker {
+    position: absolute;
+    top: calc(100% + 1.25em);
+}
+#ratio-meter-markers li.target-marker::after {
+    bottom: calc(100% - 1px);
+    border-bottom-color: var(--dark-l);
+}
+
+#ratio-meter-markers li.target-marker[data-active]::after {
+    border-bottom-color: var(--green-d);
+}
+
+#ratio-meter-markers li span {
+    display: block;
+}
+
+.ratio-meter-controls {
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+.ratio-meter-controls button {
+    appearance: none;
+    background: transparent;
+    border: none;
+    width: 2.25em;
+    height: 2.25em;
+    color: var(--dark-ll);
+    position: absolute;
+    right: 1em;
+    cursor: pointer;
+}
+.ratio-meter-controls button:hover {
+    color: var(--gray);
+}
+.ratio-meter-controls button.increase {
+    bottom: calc(100% + 1.25em);
+}
+.ratio-meter-controls button.decrease {
+    top: calc(100% + 1.35em);
+}
+.ratio-meter-controls button svg {
+    width: 2em;
+    height: 2em;
 }

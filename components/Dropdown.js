@@ -20,26 +20,27 @@ export default function dropdown(options) {
     }, 100)
 
     return html`
-  <div
-    id="${dropdownID}"
-    class="dropdown"
-    @click="${() => { state.isOpen = !state.isOpen }}"
-    data-is-open="${() => state.isOpen}"
-  >
-    <ul
-      class="dropdown-list"
+    <div
+        id="${dropdownID}"
+        class="dropdown"
+        @click="${() => { state.isOpen = !state.isOpen }}"
+        data-is-open="${() => state.isOpen}"
     >
-      ${() => items.map(item =>
-        html`
-        <li
-          data-selected="${() => item.label === state.selection}"
-          @click="${() => {
-                state.selection = item.label
-            }}"
+        <ul
+        class="dropdown-list"
         >
-          ${item.label}
-        </li>`
-    )}
-    </ul>
-  </div>`
+        ${() => items.map(item =>
+            html`
+            <li
+            data-selected="${() => item.label === state.selection}"
+            @click="${() => {
+                    state.selection = item.label
+                }}"
+            >
+            ${item.label}
+            </li>`
+        )}
+        </ul>
+    </div>
+    `
 }

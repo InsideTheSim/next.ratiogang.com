@@ -92,7 +92,7 @@ const content = reactive({
     markers: [] // generated once requisit data is available in setupMarkers()
 })
 ratio.$on('flippty', () => {
-    content.taglines[parseFloat(ratio.flippty)] = 'Mom, get the camera!'
+    content.taglines[parseFloat(ratio.flippty)] = 'Mom! Get the camera!'
     setupMarkers()
 })
 ratio.$on('flippening', () => {
@@ -104,6 +104,7 @@ function setupMarkers() {
     if (ratio.flippty && ratio.flippening) {
         content.markers = [
             {
+                id: 'party',
                 value: '0.03',
                 label: `
                     <a href="https://twitter.com/LUKACACIC/status/1377371626656952326" target="_blank" rel="noopener noreferrer">
@@ -115,13 +116,15 @@ function setupMarkers() {
                 max: 0.3
             },
             {
+                id: 'flippty',
                 value: ratio.flippty,
                 label: 'Flippty Percent',
                 icon: `🦐`,
                 min: 0.1,
                 max: 0.2
             },
-            {
+            {   
+                id: 'flippening',
                 value: ratio.flippening,
                 label: 'The Flippening',
                 icon: `🐬`,
@@ -129,6 +132,7 @@ function setupMarkers() {
                 max: 1
             },
             {
+                id: 'double',
                 value: (ratio.flippening * 2).toFixed(5),
                 label: 'The Double Dolph',
                 icon: `🐬🐬`,
@@ -136,13 +140,15 @@ function setupMarkers() {
                 max: 1
             },
             {
+                id: 'trip',
                 value: (ratio.flippening * 3).toFixed(5),
                 label: 'The Trip Flip',
                 icon: `🐬🐬🐬`,
                 min: 0.6,
                 max: 1
             },
-            {
+            {   
+                id: 'quad',
                 value: (ratio.flippening * 4).toFixed(5),
                 label: 'The Quad Pod',
                 icon: `🐬🐬🐬🐬`,

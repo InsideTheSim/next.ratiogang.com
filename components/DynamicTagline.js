@@ -14,5 +14,5 @@ function getCurrentTagline() {
 }
 
 export default html`
-<p>${ () => getCurrentTagline() }<p>
+<span class="dynamic-tagline">${ () => getCurrentTagline() }</span>
 `
