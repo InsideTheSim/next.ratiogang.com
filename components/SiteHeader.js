@@ -18,16 +18,6 @@ export default html`
         ${DynamicTagline}
     </div>
     <div class="site-options">
-        ${() => {
-            if (false) { // TODO: re-enable with light theme
-                return html`${Dropdown({
-                    items: siteOptions.themes, 
-                    callback: updateUserConfig, 
-                    updateKey: 'theme', 
-                    initialValue: userConfig.theme.label
-                })}`
-            }
-        }}
         ${Dropdown({
             items: siteOptions.currencies, 
             callback: updateUserConfig, 

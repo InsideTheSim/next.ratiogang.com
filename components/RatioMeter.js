@@ -77,7 +77,7 @@ export default html`
             if (prices.BTC && item.min <= parseFloat(ratio.meterLimit) && item.max >= parseFloat(ratio.meterLimit)) {
                 return html`
                 <li 
-                    class="target-marker"
+                    class="${() => `target-marker marker-${item.id}`}"
                     style="${() => `left: ${(item.value / ratio.meterLimit) * 100}%;`}"
                     data-active="${() => ratio.current >= item.value}"
                 >

@@ -11,7 +11,7 @@ createPriceFeed();
 getMarketCapData();
 setInterval(getMarketCapData, 15000)
 
-// Mount application components
+// Mount our application components
 html`
     <div class="layout-container">
         ${SiteHeader}

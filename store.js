@@ -1,10 +1,6 @@
 import { reactive } from "@arrow-js/core"
 
 const userConfig = reactive({
-    theme: {
-        id: 'dark',
-        label: '🌙 Dark',
-    },
     currency: {
         label: '🇺🇸 USD',
         format: 'en-US',
@@ -17,20 +13,6 @@ userConfig.$on('currency', () => {
 })
 
 const siteOptions = {
-    themes: [
-        {
-            id: 'system',
-            label: '🌗 Auto',
-        },
-        {
-            id: 'light',
-            label: '☀️ Light',
-        },
-        {
-            id: 'dark',
-            label: '🌙 Dark',
-        },
-    ],
     currencies: [
         {
             label: '🇺🇸 USD',
