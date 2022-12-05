@@ -1,5 +1,5 @@
 import { html } from "@arrow-js/core"
-import { content, ratio, prices } from '../store'
+import { content, ratio } from '../store'
 
 function getCurrentTagline() {
     if (ratio.flippening) {
