@@ -5,19 +5,22 @@
 ===================== */
 
 :root {
-    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu,
+    Cantarell, "Noto Sans", sans-serif, BlinkMacSystemFont, "Segoe UI",
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 
-    --dark: #1f2937;
-    --dark-l: #2d3a4b;
-    --dark-ll: #425267;
-    --gray-d: #65656d;
-    --gray: #cdcdce;
-    --gray-l: #e5e5e5;
-    --red: #ef4444;
-    --red-l: #ec6868;
-    --blue-l: #89bfe2;
-    --green: #109461;
-    --green-d: #0d6342;
+  --dark: #1f2937;
+  --dark-l: #2d3a4b;
+  --dark-ll: #425267;
+  --gray-d: #65656d;
+  --gray: #cdcdce;
+  --gray-l: #e5e5e5;
+  --red: #ef4444;
+  --red-l: #ec6868;
+  --blue-l: #89bfe2;
+  --green: #109461;
+  --green-d: #0d6342;
 }
 
 /* =====================
@@ -27,20 +30,20 @@
 ===================== */
 
 body {
-    font-family: var(--sans);
+  font-family: var(--sans);
 }
 
 h1 {
-    font-weight: 900;
+  font-weight: 900;
 }
 
 .monospace {
-    display: inline;
-    font-family: monospace;
-    position: relative;
-    line-height: 1.3em;
-    letter-spacing: -0.075;
-    top: -0.05em
+  display: inline;
+  font-family: monospace;
+  position: relative;
+  line-height: 1.3em;
+  letter-spacing: -0.075em;
+  top: -0.05em;
 }
 
 /* =====================
@@ -50,49 +53,49 @@ h1 {
 ===================== */
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 ::selection {
-    background: var(--red-l);
-  }
+  background: var(--red-l);
+}
 ::-moz-selection {
-    background: var(--red-l);
+  background: var(--red-l);
 }
 
 html,
 body {
-    -webkit-user-select: none;
-    user-select: none;
-    margin: 0;
-    padding: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  margin: 0;
+  padding: 0;
 }
 
 body,
 body[data-theme="dark"] {
-    background-color: var(--dark);
-    color: var(--gray-l);
+  background-color: var(--dark);
+  color: var(--gray-l);
 }
 
 .layout-container {
-    width: 100%;
-    max-width: 40em;
-    margin: 0 auto;
-    padding: 0 1em;
+  width: 100%;
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 0 1em;
 }
 
 [data-text-select="true"] {
-    -webkit-user-select: auto;
-    user-select: auto;
+  -webkit-user-select: auto;
+  user-select: auto;
 }
 
 a {
-    color: var(--blue-l);
-    text-decoration: none;
+  color: var(--blue-l);
+  text-decoration: none;
 }
 
 /* =====================
@@ -102,51 +105,51 @@ a {
 ===================== */
 
 .dropdown {
-    height: 2em;
-    max-width: 100px;
-    position: relative;
-    user-select: none;
+  height: 2em;
+  max-width: 100px;
+  position: relative;
+  user-select: none;
 }
 
 .dropdown[data-is-open] ul.dropdown-list {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
 .dropdown[data-is-open] ul.dropdown-list::before {
-    display: none;
+  display: none;
 }
 
 .dropdown[data-is-open] ul.dropdown-list > li {
-    display: flex;
+  display: flex;
 }
 
 .dropdown[data-is-open] ul.dropdown-list > li:hover {
-    background-color: var(--dark-l);
+  background-color: var(--dark-l);
 }
 
 ul.dropdown-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    border: 1px solid var(--dark-ll);
-    border-radius: .33em;
-    overflow: hidden;
-    background-color: var(--dark);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--dark-ll);
+  border-radius: 0.33em;
+  overflow: hidden;
+  background-color: var(--dark);
 }
 
 ul.dropdown-list > li {
-    height: 2rem;
-    padding: 0 1em;
-    display: flex;
-    align-items: center;
-    font-size: .75em;
-    display: none;
-    color: var(--gray);
+  height: 2rem;
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
+  font-size: 0.75em;
+  display: none;
+  color: var(--gray);
 }
 
 ul.dropdown-list > li[data-selected] {
-    display: flex;
+  display: flex;
 }
 
 /* =====================
@@ -156,34 +159,34 @@ ul.dropdown-list > li[data-selected] {
 ===================== */
 
 .the-site-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo-container {
-    display: flex;
-    flex-direction: column;
-    margin-right: 1em;
-    margin-bottom: 1em;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  text-align: center;
 }
 
 .logo-container h1 {
-    margin-bottom: 0;
-    display: flex;
+  margin-bottom: 0;
+  display: flex;
 }
 .logo-container h1 .emoji:first-child {
-    margin-right: -0.1em;
+  margin-right: -0.1em;
 }
 .logo-container h1 .emoji:last-child {
-    margin-left: -0.1em;
+  margin-left: -0.1em;
 }
 
 .dynamic-tagline {
-    color: var(--gray);
-    opacity: 0.75;
-    font-size: 0.85em;
+  color: var(--gray);
+  opacity: 0.75;
+  font-size: 0.85em;
 }
 
 /* =====================
@@ -193,42 +196,41 @@ ul.dropdown-list > li[data-selected] {
 ===================== */
 
 ul.price-stats {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    color: var(--gray);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  color: var(--gray);
 }
 
 ul.price-stats li {
-    text-align: center;
-    margin-right: .75em
+  text-align: center;
+  margin-right: 0.75em;
 }
 ul.price-stats li:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 ul.price-stats li strong {
-    margin-right: 0.25em;
-    font-size: 0.75em;
+  margin-right: 0.25em;
+  font-size: 0.75em;
 }
 ul.price-stats li strong + span {
-    color: var(--gray-d);
+  color: var(--gray-d);
 }
 ul.price-stats .percent-change {
-    display: block;
-    text-align: right;
-    font-size: 0.66em;
-    color: var(--gray-d);
+  display: block;
+  text-align: right;
+  font-size: 0.66em;
+  color: var(--gray-d);
 }
 ul.price-stats .percent-change span {
-    color: var(--green);
+  color: var(--green);
 }
 ul.price-stats .percent-change span[data-negative] {
-    color: var(--red);
+  color: var(--red);
 }
-
 
 /* =====================
 | 
@@ -237,230 +239,231 @@ ul.price-stats .percent-change span[data-negative] {
 ===================== */
 
 .ratio-meter {
-    margin: 10em 0 12em 0;
-    position: relative;
+  margin: 10em 0 12em 0;
+  position: relative;
 }
 
 #ratio-range-input {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0.25em;
-    right: 0.25em;
-    z-index: 5;
-    opacity: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0.25em;
+  right: 0.25em;
+  z-index: 5;
+  opacity: 0;
 }
 
 .ratio-meter-ui-element {
-    border: 2px solid var(--dark-ll);
-    height: 2.25em;
-    background: var(--dark-l);
-    border-radius: 999em;
-    overflow: hidden;
+  border: 2px solid var(--dark-ll);
+  height: 2.25em;
+  background: var(--dark-l);
+  border-radius: 999em;
+  overflow: hidden;
 }
 .ratio-meter-ui-element .meter-limit {
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
-    right: 0.66rem;
-    top: 50%;
-    color: var(--dark-ll);
-    transform: translateY(-50%);
-    font-size: 0.85em;
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  right: 0.66rem;
+  top: 50%;
+  color: var(--dark-ll);
+  transform: translateY(-50%);
+  font-size: 0.85em;
 }
 .ratio-meter-track {
-    position: absolute;
-    top: 0.3em;
-    bottom: 0.3em;
-    left: 0.75em;
-    right: 0.75em;
-    z-index: 2;
+  position: absolute;
+  top: 0.3em;
+  bottom: 0.3em;
+  left: 0.75em;
+  right: 0.75em;
+  z-index: 2;
 }
 .ratio-meter-track-fill {
-    box-sizing: content-box;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -0.45em;
-    right: -0.45em;
-    border-radius: 999em;
-    padding-left: 0.6em;
-    padding-right: 0.6em;
-    background: var(--red);
-    background: linear-gradient(to right, var(--red), var(--red-l));
+  box-sizing: content-box;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -0.45em;
+  right: -0.45em;
+  border-radius: 999em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  background: var(--red);
+  background: linear-gradient(to right, var(--red), var(--red-l));
 }
 .ratio-meter-track-fill::before {
-    content: attr(data-percent);
-    position: absolute;
-    top: 50%;
-    right: 1.5rem;
-    transform: translateY(-50%);
-    font-size: 0.75em;
-    opacity: 0.9;
+  content: attr(data-percent);
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  font-size: 0.75em;
+  opacity: 0.9;
 }
 .ratio-meter-track-fill::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 0.25em;
-    width: 1em;
-    height: 1em;
-    transform: translateY(-50%);
-    background-color: var(--gray-l);
-    border-radius: 50%;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0.25em;
+  width: 1em;
+  height: 1em;
+  transform: translateY(-50%);
+  background-color: var(--gray-l);
+  border-radius: 50%;
 }
 
 #ratio-meter-markers {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    bottom: 0;
-    left: 0.75em;
-    right: 0.75em;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  bottom: 0;
+  left: 0.75em;
+  right: 0.75em;
 }
 
 #ratio-meter-markers li {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    width: 110px;
-    transform: translateX(-50%);
-    text-align: center;
-    padding: 0.75em 0.33em;
-    background: var(--dark-l);
-    border: 1px solid var(--dark);
-    border-radius: 0.5em;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  width: 110px;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 0.75em 0.33em;
+  background: var(--dark-l);
+  border: 1px solid var(--dark);
+  border-radius: 0.5em;
 }
 #ratio-meter-markers li[data-active] {
-    background: var(--green-d);
+  background: var(--green-d);
 }
 #ratio-meter-markers li::after {
-    position: absolute;
-    content: '';
-    border: 0.75em solid transparent;
-    left: calc(50% - 0.75em);
+  position: absolute;
+  content: "";
+  border: 0.75em solid transparent;
+  left: calc(50% - 0.75em);
 }
 
 #ratio-meter-markers li .value {
-    margin-bottom: 0.33em;
+  margin-bottom: 0.33em;
 }
 #ratio-meter-markers li .price {
-    font-size: 1em;
-    opacity: 0.5;
-    margin-bottom: 0.33em;
+  font-size: 1em;
+  opacity: 0.5;
+  margin-bottom: 0.33em;
 }
 #ratio-meter-markers li .label {
-    font-size: 0.8em;
-    margin-bottom: .5rem;
+  font-size: 0.8em;
+  margin-bottom: 0.5rem;
 }
 #ratio-meter-markers li .label a {
-    color: inherit;
-    text-decoration: underline;
+  color: inherit;
+  text-decoration: underline;
 }
 #ratio-meter-markers li .icon {
-    font-size: 1.75em;
-    line-height: 1;
-    margin-bottom: -0.1em;
+  font-size: 1.75em;
+  line-height: 1;
+  margin-bottom: -0.1em;
 }
 #ratio-meter-markers li button {
-    appearance: none;
-    border: none;
-    background: var(--green);
-    border-radius: 0.25em;
-    color: var(--gray-l);
-    font-weight: bold;
-    font-size: 0.75em;
-    padding: 0.25em;
-    margin-bottom: -0.1em;
-    cursor: pointer;
+  appearance: none;
+  border: none;
+  background: var(--green);
+  border-radius: 0.25em;
+  color: var(--gray-l);
+  font-weight: bold;
+  font-size: 0.75em;
+  padding: 0.25em;
+  margin-bottom: -0.1em;
+  cursor: pointer;
 }
 #ratio-meter-markers li button:hover {
-    filter: brightness(1.1)
+  filter: brightness(1.1);
 }
 
 #ratio-meter-markers li.current-marker {
-    position: absolute;
-    bottom: calc(100% + 1.25em);
-    background-color: var(--dark-ll);
+  position: absolute;
+  bottom: calc(100% + 1.25em);
+  background-color: var(--dark-ll);
 }
 #ratio-meter-markers li.current-marker::after {
-    top: calc(100% - 1px);
-    border-top-color: var(--dark-ll);
+  top: calc(100% - 1px);
+  border-top-color: var(--dark-ll);
 }
 #ratio-meter-markers li.current-marker[data-active] {
-    background-color: var(--green-d);
+  background-color: var(--green-d);
 }
 #ratio-meter-markers li.current-marker[data-active]::after {
-    border-top-color: var(--green-d);
+  border-top-color: var(--green-d);
 }
 #ratio-meter-markers li.current-marker .label {
-    font-weight: bold;
-    font-size: 1em;
-    margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1em;
+  margin-bottom: 0;
 }
 
 #ratio-meter-markers li.target-marker {
-    position: absolute;
-    top: calc(100% + 1.25em);
+  position: absolute;
+  left: 0;
+  transform: translateX(-50%);
+  top: calc(100% + 1.25em);
 }
 #ratio-meter-markers li.target-marker::after {
-    bottom: calc(100% - 1px);
-    border-bottom-color: var(--dark-l);
+  bottom: calc(100% - 1px);
+  border-bottom-color: var(--dark-l);
 }
 
-
 #ratio-meter-markers li.target-marker[data-active]::after {
-    border-bottom-color: var(--green-d);
+  border-bottom-color: var(--green-d);
 }
 
 #ratio-meter-markers li.marker-flippty {
-    transform: translateX(-21.5%);
+  transform: translateX(-21.5%);
 }
 #ratio-meter-markers li.marker-flippty::after {
-    left: 12%;
+  left: 12%;
 }
 
 @media (max-width: 500px) {
-    #ratio-meter-markers li.marker-flippening {
-        transform: translateX(-37%);
-    }
-    #ratio-meter-markers li.marker-flippening::after {
-        left: 26%;
-    }
+  #ratio-meter-markers li.marker-flippening {
+    transform: translateX(-37%);
+  }
+  #ratio-meter-markers li.marker-flippening::after {
+    left: 26%;
+  }
 }
 
 #ratio-meter-markers li span {
-    display: block;
+  display: block;
 }
 
 .ratio-meter-controls {
-    position: absolute;
-    right: 0;
-    top: 50%;
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 .ratio-meter-controls button {
-    appearance: none;
-    background: transparent;
-    border: none;
-    width: 2.25em;
-    height: 2.25em;
-    color: var(--dark-ll);
-    position: absolute;
-    right: 1em;
-    cursor: pointer;
+  appearance: none;
+  background: transparent;
+  border: none;
+  width: 2.25em;
+  height: 2.25em;
+  color: var(--dark-ll);
+  position: absolute;
+  right: 1em;
+  cursor: pointer;
 }
 .ratio-meter-controls button:hover {
-    color: var(--gray);
+  color: var(--gray);
 }
 .ratio-meter-controls button.increase {
-    bottom: calc(100% + 1.25em);
+  bottom: calc(100% + 1.25em);
 }
 .ratio-meter-controls button.decrease {
-    top: calc(100% + 1.35em);
+  top: calc(100% + 1.35em);
 }
 .ratio-meter-controls button svg {
-    width: 2em;
-    height: 2em;
+  width: 2em;
+  height: 2em;
 }
